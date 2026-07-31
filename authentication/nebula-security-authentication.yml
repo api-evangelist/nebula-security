@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/NebuSec/vega-skill/blob/main/skills/vega-cli/SKILL.md
+note: >-
+  No public OpenAPI is published, so this profile is derived from the Vega CLI
+  authentication documentation rather than a machine-readable securityScheme.
+  The Vega backend (VEGA_API_URL, default production) authenticates with either a
+  bearer API key or an OAuth browser login.
+summary:
+  types: [apiKey, oauth2]
+  api_key_in: [header]
+  api_key_prefix: vega_
+  oauth2_flows: [browser-login]
+schemes:
+- name: VegaApiKey
+  type: apiKey
+  key_prefix: vega_
+  env: VEGA_API_KEY
+  cli_flag: --api-key
+  precedence: 1
+  note: Highest-precedence credential; suitable for headless/CI use.
+- name: VegaOAuthLogin
+  type: oauth2
+  flow: browser-login
+  cli: vega auth login
+  headless_flag: --headless
+  precedence: 2
+  note: Stored OAuth token from an interactive browser login; used when VEGA_API_KEY is unset.
+verify: vega auth status --json
+unauthenticated_exit_code: 3

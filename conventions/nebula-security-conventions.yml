@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/NebuSec/vega-skill/blob/main/skills/vega-cli/SKILL.md
+note: >-
+  Cross-cutting request/response semantics for the Vega backend, captured from the
+  published Vega CLI reference (no public OpenAPI). Cross-links authentication/,
+  errors/, and data-model/.
+authentication:
+  style: bearer-api-key-or-oauth
+  ref: authentication/nebula-security-authentication.yml
+identifiers:
+  style: self-describing-prefixed
+  prefixes:
+    project: pg_
+    repository: proj_
+    scan: scan_
+    finding: finding_
+  note: Wherever a <project> or <repo> argument is accepted, a unique name also resolves.
+pagination:
+  style: cursor
+  request_param: --cursor
+  response_field: next_cursor
+  fetch_all: --all
+  note: In text mode the cursor prints on stderr; in --json mode next_cursor is in the body.
+output_modes:
+  default: aligned columns (lists) / markdown-style sections (details) on stdout
+  json: global --json flag returns raw backend JSON (compact, one object/array per line / NDJSON for multi)
+  stream_channels: stdout=data only; stderr=progress, warnings, errors
+request_tracing:
+  id_field: request_id
+  surfaced_in: "error messages: error[<code>]: <message> (request_id=…)"
+error_envelope:
+  ref: errors/nebula-security-error-codes.yml
+  cli_format: "error[<code>]: <message> (request_id=…)"
+filtering:
+  params: [--severity, --status, --file-prefix, --cwe, -q, --limit]
+idempotency:
+  supported: false
+  note: No idempotency-key contract is documented for the Vega backend/CLI.
+cost_governance:
+  note: Scan-creating operations require explicit cost consent (--max-cost / --yes) and support a server-side spend cap (--cost-cap); a free estimate (--estimate-only) is available.

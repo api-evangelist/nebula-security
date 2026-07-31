@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/NebuSec/vega-skill/blob/main/skills/vega-cli/SKILL.md
+note: >-
+  The Vega backend has no public OpenAPI, so this catalog captures the Vega CLI
+  exit-code contract and error envelope (the documented, stable error surface).
+  Errors print on stderr as `error[<code>]: <message> (request_id=…)`.
+envelope:
+  format: "error[<code>]: <message> (request_id=…)"
+  channel: stderr
+  trace_field: request_id
+exit_codes:
+- code: 0
+  meaning: success
+  reaction: "—"
+- code: 1
+  meaning: API/transport error (incl. 403 permission/billing denials — message says why)
+  reaction: read stderr
+- code: 2
+  meaning: usage error / ambiguous name
+  reaction: fix arguments, or use the id
+- code: 3
+  meaning: not authenticated (HTTP 401 / no credential)
+  reaction: "`vega auth login` or set VEGA_API_KEY"
+- code: 4
+  meaning: not found (bad id or unknown name)
+  reaction: check the id
+- code: 5
+  meaning: scan ended failed/cancelled under --wait/--follow
+  reaction: inspect failure_reason in the printed detail
+- code: 6
+  meaning: cost consent refused or --max-cost exceeded
+  reaction: raise --max-cost or pass --yes

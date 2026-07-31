@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/NebuSec/vega-skill/blob/main/skills/vega-cli/SKILL.md
+note: Provider-published Agent Skill saved verbatim. Distributed by Nebula Security
+  as a Claude Code plugin (NebuSec/vega-skill), a Codex skill, and via `npx skills`.
+skills:
+- file: nebula-security-vega-cli.md
+  name: vega-cli
+  description: Query Vega security-scan results and run security scans from the command
+    line — projects/repositories/scans/findings drill-down, scan execution with cost
+    consent, and agent-friendly text/JSON output.
+  api: Vega backend API (VEGA_API_URL, default production)
+  operations:
+  - vega auth status
+  - vega auth login
+  - vega projects list
+  - vega projects get
+  - vega repos list
+  - vega scans run
+  - vega scans get
+  - vega scans follow
+  - vega findings list
+  - vega findings get
+  - vega findings export

@@ -1,0 +1,18 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.npmjs.com/package/@nebusec/vega
+note: >-
+  Nebula Security publishes a first-party CLI binary (Vega) rather than language
+  client-SDK libraries. The npm package installs the CLI globally; the same binary
+  is distributed via an install.sh script and GitHub release assets. No language
+  client SDKs (Python/Java/Go/etc.) were found on the public registries.
+packages:
+- language: javascript
+  registry: npm
+  name: "@nebusec/vega"
+  url: https://www.npmjs.com/package/@nebusec/vega
+  install: npm install -g @nebusec/vega
+  version: 0.1.1
+  kind: cli
+  official: true
+  repository: https://github.com/NebuSec/vega-cli

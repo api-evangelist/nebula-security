@@ -1,0 +1,30 @@
+# Nebula Security
+
+> Nebula Security is an AI-native cybersecurity company (Y Combinator S26) building AI-driven security review and code-auditing. Its product, Vega, scans codebases for vulnerabilities on the Vega backend and is driven from the terminal via the Vega CLI (`vega`), which agents install as a packaged Agent Skill.
+
+## Products
+- [Vega Code Scan](https://nebusec.ai/vega): AI security agent that audits codebases for vulnerabilities.
+- [Security Audit](https://nebusec.ai/security-audit): Product security auditing by world-class hackers plus the Vega agent.
+- [Bug List / Research](https://nebusec.ai/buglist): Disclosed vulnerabilities found by the team (e.g. nginx-quicburst RCE, CVE-2026-42530).
+
+## Developer surface
+- [Vega CLI (skill + binaries)](https://github.com/NebuSec/vega-skill): Command-line tool + Agent Skill distribution for running Vega scans and querying findings.
+- [Agent Skill (SKILL.md)](https://github.com/NebuSec/vega-skill/blob/main/skills/vega-cli/SKILL.md): Provider-published operating instructions for agents.
+- [npm @nebusec/vega](https://www.npmjs.com/package/@nebusec/vega): `npm install -g @nebusec/vega`.
+
+## Company
+- [About / The Lab](https://nebusec.ai/about)
+- [Research](https://nebusec.ai/research)
+- [GitHub](https://github.com/NebuSec)
+- [X](https://x.com/nebusecurity)
+- [LinkedIn](https://www.linkedin.com/company/125323912/)
+- Contact: root@nebusec.ai (security) / info@nebusec.ai (business)
+
+## Artifacts (API Evangelist enrichment)
+- skills/nebula-security-vega-cli.md — provider Agent Skill (verbatim)
+- cli/nebula-security-cli.yml — Vega CLI command surface
+- packages/nebula-security-packages.yml — @nebusec/vega
+- authentication/nebula-security-authentication.yml — API key + OAuth login
+- conventions/nebula-security-conventions.yml — pagination, ids, error envelope
+- errors/nebula-security-error-codes.yml — CLI exit-code contract
+- data-model/nebula-security-data-model.yml — project → repository → scan → finding

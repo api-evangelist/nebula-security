@@ -1,0 +1,55 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/NebuSec/vega-skill
+docs: https://github.com/NebuSec/vega-skill/blob/main/skills/vega-cli/SKILL.md
+name: vega
+summary: >-
+  Vega CLI is a non-interactive, agent- and automation-friendly command-line tool
+  for running Vega security scans and inspecting projects, repositories, scans, and
+  findings against the Vega backend. stdout carries data only; progress/warnings/errors
+  go to stderr; a global --json flag returns the raw backend JSON.
+install:
+- method: script
+  command: curl -fsSL https://raw.githubusercontent.com/NebuSec/vega-skill/main/install.sh | sh
+  note: Installs latest release to ~/.local/bin. VEGA_VERSION pins a release; VEGA_INSTALL_DIR changes target.
+- method: npm
+  command: npm install -g @nebusec/vega
+  note: Requires Node.js >= 18.
+- method: release-binary
+  url: https://github.com/NebuSec/vega-skill/releases
+  platforms: [linux-x64, linux-arm64, darwin-x64, darwin-arm64]
+authentication:
+  env: VEGA_API_KEY
+  key_prefix: vega_
+  login: vega auth login
+  headless: vega auth login --headless
+  backend_url_env: VEGA_API_URL
+command_groups:
+- group: auth
+  commands: [login, status]
+- group: projects
+  aliases: [project]
+  commands: [list, get, repos, scans]
+- group: repos
+  aliases: [repo]
+  commands: [list, get, scans]
+- group: scans
+  aliases: [scan]
+  commands: [list, get, run, follow, pause, resume, cancel, retry, cost-cap, estimate]
+- group: findings
+  aliases: [finding]
+  commands: [list, get, export]
+key_flows:
+- name: Authenticate
+  steps: [vega auth login, vega auth status --json]
+- name: Run a scan with cost guardrails
+  steps: [vega scans run --path . --yes --max-cost 20 --cost-cap 30 --wait]
+- name: Drill down to findings
+  steps: [vega projects list, vega repos list, vega scans list, vega findings list --scan <scan_id>, vega findings get <finding_id>]
+- name: Poll a running scan cheaply
+  steps: [vega scans get <scan_id> -s]
+- name: Export a report
+  steps: [vega findings export --scan <scan_id>]
+notes:
+- Cost consent: scans cost real money; --max-cost / --yes gate creation, --cost-cap caps server-side spend, --estimate-only is free.
+- Output filtering keeps token use small (--severity, --status, --file-prefix, --cwe, -q, --limit) with cursor pagination (--cursor / --all).

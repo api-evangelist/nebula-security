@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/NebuSec/vega-skill/blob/main/skills/vega-cli/SKILL.md
+note: >-
+  Entity-relationship model of the Vega backend, derived from the Vega CLI object
+  hierarchy and id prefixes (no public OpenAPI). Hierarchy: project → repository →
+  scan → finding.
+entities:
+- name: project
+  id_prefix: pg_
+  fields: [name, repos, finding_counts]
+  note: Top-level workspace grouping of repositories.
+- name: repository
+  id_prefix: proj_
+  fields: [git_remote, state, snapshot_id, latest_scan_id]
+- name: scan
+  id_prefix: scan_
+  fields: [state, progress, cost, findings, failure_reason, snapshot_id]
+- name: finding
+  id_prefix: finding_
+  fields: [severity, confidence, status, file, title, cwe, root_cause, evidence, fix, attack_path]
+relationships:
+- from: repository
+  to: project
+  kind: belongs_to
+  via: project
+- from: project
+  to: repository
+  kind: has_many
+  via: repos
+- from: scan
+  to: repository
+  kind: belongs_to
+  via: repo
+- from: repository
+  to: scan
+  kind: has_many
+  via: scans
+- from: finding
+  to: scan
+  kind: belongs_to
+  via: scan
+- from: scan
+  to: finding
+  kind: has_many
+  via: findings
+enumerations:
+  severity: [critical, high, medium, low]
+  confidence: [high, medium, low]
+  finding_status: [candidate, confirmed, duplicate]

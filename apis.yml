@@ -1,9 +1,30 @@
 aid: nebula-security
 name: Nebula Security
-description: Nebula Security is a company surfaced as a portfolio company of y-combinator and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Nebula Security is an AI-native cybersecurity company backed by Y Combinator (S26)
+  and founded by world-class hackers — members of a top CTF team, DEF CON winners,
+  Black Hat speakers, and cybersecurity PhDs. Its product, Vega, is an AI security
+  agent that audits codebases for vulnerabilities on the Vega backend, alongside
+  human-led product security auditing. Vega runs from the terminal via the Vega CLI
+  (`vega`), which is distributed as an installable Agent Skill and an npm/global
+  binary, authenticates with an API key or OAuth login, and exposes a
+  project → repository → scan → finding drill-down. The team publishes vulnerability
+  research (e.g. an nginx RCE, CVE-2026-42530) and positions "Audited by Nebula
+  Security" as a product credibility marker.
 url: https://raw.githubusercontent.com/api-evangelist/nebula-security/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://nebusec.ai/nebusec-social.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,12 +33,71 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- Security
+- Cybersecurity
+- Vulnerability Management
+- Application Security
+- Code Scanning
+- Artificial Intelligence
+- Developer Tools
+- CLI
 apis: []
+common:
+- type: DomainSecurity
+  url: security/nebula-security-domain-security.yml
+- type: Website
+  url: https://nebusec.ai
+- type: About
+  url: https://nebusec.ai/about
+- type: Blog
+  url: https://nebusec.ai/research
+- type: Documentation
+  url: https://github.com/NebuSec/vega-skill/blob/main/README.md
+- type: APIReference
+  url: https://github.com/NebuSec/vega-skill/blob/main/skills/vega-cli/SKILL.md
+- type: GettingStarted
+  url: https://github.com/NebuSec/vega-skill#getting-started
+- type: GitHubOrganization
+  url: https://github.com/NebuSec
+- type: Support
+  url: mailto:info@nebusec.ai
+- type: TermsOfService
+  url: https://nebusec.ai/terms/
+- type: PrivacyPolicy
+  url: https://nebusec.ai/privacy/
+- type: Twitter
+  url: https://x.com/nebusecurity
+- type: LinkedIn
+  url: https://www.linkedin.com/company/125323912/
+- type: AgentSkill
+  name: Vega CLI Agent Skill
+  url: skills/nebula-security-vega-cli.md
+- type: CLI
+  url: cli/nebula-security-cli.yml
+- type: Packages
+  url: packages/nebula-security-packages.yml
+- type: Authentication
+  url: authentication/nebula-security-authentication.yml
+- type: Conventions
+  url: conventions/nebula-security-conventions.yml
+- type: ErrorCatalog
+  url: errors/nebula-security-error-codes.yml
+- type: DataModel
+  url: data-model/nebula-security-data-model.yml
+- type: WellKnown
+  url: well-known/nebula-security-well-known.yml
+- type: LLMsTxt
+  url: llms/nebula-security-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1
