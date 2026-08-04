@@ -2,6 +2,13 @@
   "repo": "nebula-security",
   "feeds": [
     {
+      "source": "https://nebusec.ai/rss.xml",
+      "feed_url": "https://nebusec.ai/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://nebusec.ai/about",
       "feed_url": "https://nebusec.ai/rss.xml",
       "title": "",
@@ -9,6 +16,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-07-25T15:00:33Z"
+  "post_count": 5,
+  "fetched": "2026-08-01T15:49:00Z"
 }
