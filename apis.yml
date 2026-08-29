@@ -12,6 +12,17 @@ description: >-
   research (e.g. an nginx RCE, CVE-2026-42530) and positions "Audited by Nebula
   Security" as a product credibility marker.
 url: https://raw.githubusercontent.com/api-evangelist/nebula-security/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
